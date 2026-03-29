@@ -1,109 +1,16 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>陳威甫建築師事務所 | CWF Architects & Luminos Design</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;900&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- 蒙德里安核心美學系統 --- */
-        :root {
-            --m-black: #1a1a1a;
-            --m-red: #E62222;
-            --m-yellow: #FFEB3B;
-            --m-blue: #1546AD;
-            --m-white: #FFFFFF;
-            --m-line: 5px; /* 標誌性的幾何粗線 */
-            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background-color: var(--m-white);
-            color: var(--m-black);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        /* --- 畫布佈局：格線系統 --- */
-        .canvas-grid {
-            display: grid;
-            grid-template-columns: var(--m-line) 1fr var(--m-line) 280px;
-            grid-template-rows: auto;
-            min-height: 100vh;
-        }
-
-        .v-line { background-color: var(--m-black); }
-
-        /* --- Header: 非對稱的結構平衡 --- */
-        header {
-            grid-column: 2 / 5;
-            padding: 120px 8% 80px;
-            border-bottom: var(--m-line) solid var(--m-black);
-            position: relative;
-            background: linear-gradient(135deg, #fff 70%, #f9f9f9 100%);
-        }
-
-        .red-block {
-            position: absolute;
-            top: 0; right: 0; width: 140px; height: 100%;
-            background-color: var(--m-red);
-            border-left: var(--m-line) solid var(--m-black);
-        }
-
-        h1 {
-            font-size: clamp(2.2rem, 6vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -1px;
-        }
-
-        .brand-sub {
-            margin-top: 25px;
-            font-family: 'Quicksand', sans-serif;
-            letter-spacing: 6px;
-            font-weight: 500;
-            color: var(--m-black);
-            font-size: 1.1rem;
-        }
-
-        /* --- 區塊標題：黃色與黑色的權威感 --- */
         .label-block {
             display: inline-block;
             background: var(--m-yellow);
-            padding: 4px 20px;
+            padding: 4px 15px;
             font-weight: 700;
             border: var(--m-line) solid var(--m-black);
-            margin-bottom: 30px;
-            font-family: 'Quicksand', sans-serif;
-            text-transform: uppercase;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
         }
 
-        /* --- 內容段落 --- */
-        section {
-            grid-column: 2 / 3;
-            padding: 80px 8%;
-            border-bottom: var(--m-line) solid var(--m-black);
-        }
-
-        .philosophy-text {
-            font-size: 1.15rem;
-            font-weight: 300;
-            max-width: 800px;
-        }
-
-        .philosophy-highlight {
-            font-weight: 500;
-            border-left: 10px solid var(--m-blue);
-            padding-left: 20px;
-            margin: 30px 0;
-        }
-
-        /* --- 作品展示：理性的網格複寫 --- */
+        /* --- 作品區塊：手機端改為垂直排列 --- */
         .project-section {
             grid-column: 2 / 5;
             display: grid;
@@ -111,74 +18,57 @@
             border-bottom: var(--m-line) solid var(--m-black);
         }
 
-        .project-card {
-            padding: 60px 10%;
-            transition: var(--transition);
-        }
-
-        .project-card:hover { background-color: #fcfcfc; }
+        .project-card { padding: 40px 6%; }
 
         .image-frame {
             border: var(--m-line) solid var(--m-black);
             overflow: hidden;
-            margin-bottom: 30px;
-            background-color: #eee;
+            margin-bottom: 20px;
+            width: 100%;
         }
 
         .image-frame img {
             width: 100%;
             display: block;
-            filter: grayscale(100%);
-            transition: var(--transition);
+            object-fit: cover;
+            aspect-ratio: 16 / 9;
         }
 
-        .project-card:hover img { filter: grayscale(0%); transform: scale(1.03); }
-
-        /* --- 服務清單：紅色的垂直節點 --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .service-tag {
-            padding: 15px;
-            border-left: 12px solid var(--m-red);
-            background: #f4f4f4;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .service-tag:hover { background: var(--m-black); color: #fff; }
-
-        /* --- 藍色裝飾區塊 --- */
-        .blue-side {
-            grid-column: 4 / 5;
-            background-color: var(--m-blue);
-            border-bottom: var(--m-line) solid var(--m-black);
-        }
-
-        /* --- 頁尾 --- */
+        /* --- 頁尾修正 --- */
         footer {
             grid-column: 2 / 5;
-            padding: 60px 8%;
+            padding: 60px 6%;
             display: flex;
+            flex-wrap: wrap; /* 防止手機端擠壓 */
             justify-content: space-between;
-            align-items: flex-end;
-            background-color: #fff;
+            gap: 30px;
         }
 
-        .footer-info h4 { margin-bottom: 15px; text-decoration: underline; }
+        /* --- 針對 iPhone 與行動裝置的精準優化 --- */
+        @media (max-width: 1024px) {
+            .canvas-grid {
+                grid-template-columns: 0 1fr 0 0; /* 隱藏裝飾性的側邊線條 */
+            }
+            header, section, .project-section, footer {
+                grid-column: 2 / 3; /* 統一佔滿寬度 */
+            }
+            .project-section {
+                grid-template-columns: 1fr; /* 作品改為上下並列 */
+            }
+            .red-block {
+                width: 60px; /* 縮小裝飾塊 */
+            }
+            /* 修正作品二號的邊界線 */
+            .project-card:first-child {
+                border-bottom: var(--m-line) solid var(--m-black);
+            }
+            .v-line { display: none; }
+        }
 
-        /* 行動裝置優化 */
-        @media (max-width: 1000px) {
-            .canvas-grid { grid-template-columns: 0 1fr 0 0; }
-            .red-block, .v-line, .blue-side { display: none; }
-            .project-section { grid-template-columns: 1fr; }
-            header { padding: 80px 5% 40px; }
-            section { padding: 40px 5%; }
-            h1 { font-size: 2.5rem; }
+        @media (max-width: 480px) {
+            header { padding-top: 80px; }
+            h1 { font-size: 1.8rem; }
+            .project-card { padding: 30px 5%; }
         }
     </style>
 </head>
