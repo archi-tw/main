@@ -1,3 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>陳威甫建築師事務所 | CWF Architects</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;900&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --m-black: #1a1a1a;
+            --m-red: #E62222;
+            --m-yellow: #FFEB3B;
+            --m-blue: #1546AD;
+            --m-white: #FFFFFF;
+            --m-line: 5px; 
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* 修正 iPhone 滾動彈性 */
+        html { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--m-white);
+            color: var(--m-black);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* --- 修正後的網格佈局 --- */
+        .canvas-grid {
+            display: grid;
+            /* 將右側固定寬度改為動態，防止在大螢幕手機跑版 */
+            grid-template-columns: var(--m-line) 1fr var(--m-line) minmax(50px, 20%);
+            grid-template-rows: auto;
+            min-height: 100vh;
+        }
+
+        .v-line { background-color: var(--m-black); }
+
+        header {
+            grid-column: 2 / 5;
+            padding: clamp(60px, 15vh, 120px) 6% 60px;
+            border-bottom: var(--m-line) solid var(--m-black);
+            position: relative;
+        }
+
+        .red-block {
+            position: absolute;
+            top: 0; right: 0; width: 25%; height: 100%;
+            background-color: var(--m-red);
+            border-left: var(--m-line) solid var(--m-black);
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 8vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            z-index: 2;
+            position: relative;
+        }
+
+        .brand-sub {
+            margin-top: 20px;
+            font-family: 'Quicksand', sans-serif;
+            letter-spacing: 4px;
+            font-weight: 500;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            grid-column: 2 / 3;
+            padding: 60px 6%;
+            border-bottom: var(--m-line) solid var(--m-black);
         }
 
         .label-block {
